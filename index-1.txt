@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGA Broiler Growth Dynamics - Derivatives in Animal Husbandry</title>
+    <!-- Chart.js CDN for interactive visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #e8f5e9;
+            --secondary: #c62828;
+            --dark: #263238;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: var(--dark);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #666;
+            margin: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .formula-box {
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .formula-highlight {
+            color: #63b3ed;
+            font-weight: bold;
+        }
+
+        .derivative-highlight {
+            color: #fc8181;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: 20px 0;
+            background: white;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .output-panel {
+            background: var(--primary-light);
+            border: 2px dashed var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .output-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .source-footer {
+            margin-top: 30px;
+            font-size: 11px;
+            color: #888;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .click-prompt {
+            text-align: center;
+            color: var(--secondary);
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>SAGA Broiler Growth Rate Optimization Application</h1>
+        <p class="subtitle">Applying Calculus to Animal Husbandry Technology (SFH) within the Malaysian Livestock Industry Context</p>
+    </header>
+
+    <div class="grid">
+        <!-- Left Side: Problem Statement & Math formulas -->
+        <div>
+            <div class="card">
+                <h3>The Bioscience Problem</h3>
+                <p>
+                    In Malaysian poultry husbandry, feed contributes to <strong>65% to 70%</strong> of commercial operational costs. To optimize the Feed Conversion Ratio (FCR), farm supervisors must accurately track daily weight gain patterns. Looking exclusively at static body weight parameters obscures the critical physiological transitions of the flock.
+                </p>
+                <p>
+                    By applying the <strong>First Derivative $f'(x)$</strong> to a cubic growth curve, we isolate the precise inflection coordinates indicating maximum daily tissue deposition acceleration. This math-driven strategy allows farm technologists to adapt nutritional formulas precisely when metabolic requirements transition from starter to finisher feeds.
+                </p>
+            </div>
+
+            <div class="card" style="margin-top: 20px; border-left-color: var(--secondary);">
+                <h3>Mathematical Modeling Functions</h3>
+                <p>Let $x$ represent the biological life age of the broiler bird in <strong>days</strong> ($0 \le x \le 42$), and $f(x)$ equal the total weight achieved in <strong>grams</strong>:</p>
+                
+                <div class="formula-box">
+                    <span class="formula-highlight">f(x) = -0.022x³ + 1.62x² + 2.5x + 45</span>
+                </div>
+
+                <p>To compute the instantaneous rate of gain ($\text{grams/day}$), we apply the power rule of differentiation to acquire the first derivative $f'(x)$:</p>
+                
+                <div class="formula-box">
+                    <span class="derivative-highlight">f'(x) = -0.066x² + 3.24x + 2.5</span>
+                </div>
+                <p style="font-size: 12px; margin: 0; color: #555;">
+                    *Where the constants represent localized baseline parameters fitted for hot, humid tropical climates inside automated closed-house infrastructure environments.
+                </p>
+            </div>
+        </div>
+
+        <!-- Right Side: Interactive Graph and Live Dynamic Panel -->
+        <div>
+            <p class="click-prompt">💡 Click on any coordinate point along the line chart below to diagnose growth parameters!</p>
+            
+            <div class="chart-container">
+                <canvas id="growthChart"></canvas>
+            </div>
+
+            <div id="outputPanel" class="output-panel">
+                <h4 class="output-title">
+                    <span>Husbandry Diagnostic Readout</span>
+                    <span id="dayBadge" class="badge">Select a Point</span>
+                </h4>
+                <div id="panelContent">
+                    <p style="color: #666; margin: 0;">Click on a data node along the chart timeline to calculate dynamic derivative shifts, determine daily structural mass additions, and receive actionable production coaching instructions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="source-footer">
+            <strong>Biological Baseline Source References:</strong><br>
+            1. <i>"AI-Driven prediction of body weight in chicken genotypes with different growth rates"</i> - Institute of Tropical Agriculture and Food Security (ITAFoS), Universiti Putra Malaysia (UPM), 2026.<br>
+            2. <i>"Economic Production of Broiler Industry in Malaysia"</i> - Department of Veterinary Services (DVS) Portal, Ministry of Agriculture and Food Security.
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Generate simulated data points matching typical Malaysian SAGA biological metrics over 42 days
+    const labels = [];
+    const weightData = [];
+    const rateData = [];
+
+    // Cubic weight formula: f(x) = -0.022x^3 + 1.62x^2 + 2.5x + 45
+    function calculateWeight(x) {
+        return (-0.022 * Math.pow(x, 3)) + (1.62 * Math.pow(x, 2)) + (2.5 * x) + 45;
+    }
+
+    // Derivative growth velocity formula: f'(x) = -0.066x^2 + 3.24x + 2.5
+    function calculateGrowthRate(x) {
+        return (-0.066 * Math.pow(x, 2)) + (3.24 * x) + 2.5;
+    }
+
+    // Populate data sets at 3-day intervals for balanced visualization tracking
+    for (let day = 0; day <= 42; day += 3) {
+        labels.push("Day " + day);
+        weightData.push(parseFloat(calculateWeight(day).toFixed(2)));
+        rateData.push(parseFloat(calculateGrowthRate(day).toFixed(2)));
+    }
+
+    // Initialize Chart.js configuration
+    const ctx = document.getElementById('growthChart').getContext('2d');
+    const growthChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'SAGA Body Mass Weight f(x) [Grams]',
+                data: weightData,
+                borderColor: '#2e7d32',
+                backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                borderWidth: 3,
+                tension: 0.2,
+                yAxisID: 'yWeight',
+                fill: true,
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#2e7d32'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ": " + context.raw + " g";
+                        }
+                    }
+                }
+            },
+            scales: {
+                yWeight: {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Cumulative Bird Mass (g)',
+                        color: '#2e7d32',
+                        font: { weight: 'bold' }
+                    },
+                    min: 0,
+                    max: 2500
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Broiler Production Age Timeline (Days)',
+                        font: { weight: 'bold' }
+                    }
+                }
+            },
+            // Logic targeting element intersections on mouse clicks
+            onClick: (event, activeElements) => {
+                if (activeElements.length > 0) {
+                    const dataIndex = activeElements[0].index;
+                    const selectedDay = dataIndex * 3; // Corresponds to the 3-day interval logic
+                    
+                    updateDiagnosticPanel(selectedDay);
+                }
+            }
+        }
+    });
+
+    // Handle dynamic calculus calculation panel rendering updates
+    function updateDiagnosticPanel(day) {
+        const weight = calculateWeight(day);
+        const rate = calculateGrowthRate(day);
+        
+        const badgeEl = document.getElementById('dayBadge');
+        const contentEl = document.getElementById('panelContent');
+        const panelEl = document.getElementById('outputPanel');
+
+        badgeEl.innerText = "Day " + day + " Analysis";
+        panelEl.style.backgroundColor = "#fffde7"; // Briefly shift color to cue layout rendering changes
+        setTimeout(() => { panelEl.style.backgroundColor = "var(--primary-light)"; }, 150);
+
+        // Generate specific interpretations mapped directly to broiler physiology milestones
+        let interpretation = "";
+        if (day <= 12) {
+            interpretation = "<strong>Broiler Brooding Stage:</strong> The tissue accumulation velocity is small but increasing. Energy usage goes toward establishing skeletal systems, internal organs, and metabolic homeostasis. Keep environmental housing temperatures tightly regulated between 29-32°C inside closed houses.";
+        } else if (day > 12 && day <= 27) {
+            interpretation = "<strong>Peak Dynamic Acceleration Stage:</strong> The derivative value shows the flock is gaining muscle tissue rapidly. This phase requires optimized feed profiles with balanced amino acids to maximize growth performance and support protein deposition.";
+        } else if (day > 27 && day <= 36) {
+            interpretation = "<strong>Maturation Inflection Phase:</strong> Although the overall weight curve continues ascending, the derivative confirms the growth rate has flattened out and begun a downward trend. Protein accretion shifts toward abdominal fat pad production.";
+        } else {
+            interpretation = "<strong>Harvest Target Window:</strong> The growth rate slows down significantly. Keeping birds past this timeline reduces feed conversion efficiency and cuts into profit margins. Plan harvest schedules and coordinate logistics with processing facilities.";
+        }
+
+        // Structural HTML generation inserted into the application UI layout
+        contentEl.innerHTML = `
+            <table style="width:100%; border-collapse: collapse; margin-bottom: 15px;">
+                <tr>
+                    <td style="padding: 6px 0; color:#555;"><strong>Current Age Position ($x$):</strong></td>
+                    <td style="text-align: right; font-weight: bold;">${day} Days Old</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 0; color:#555;"><strong>Flock Mass $f(x)$:</strong></td>
+                    <td style="text-align: right; color: var(--primary); font-weight: bold;">${weight.toFixed(2)} Grams</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 0; color:#555;"><strong>Instantaneous Derivative Value $f'(x)$:</strong></td>
+                    <td style="text-align: right; color: var(--secondary); font-weight: bold;">${rate.toFixed(2)} Grams / Day</td>
+                </tr>
+            </table>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #d4edda; font-size: 14px; line-height: 1.5;">
+                <strong>Technologist Diagnostic Note:</strong> ${interpretation}
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
